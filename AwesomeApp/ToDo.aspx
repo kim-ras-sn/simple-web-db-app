@@ -19,11 +19,11 @@
       <form id="form1" runat="server">
          <div>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-               ConnectionString= "<%$   ConnectionStrings:ToDoDB%>" 
+               ConnectionString= "<%$ ConnectionStrings:ToDoDB%>" 
                ProviderName= "<%$ ConnectionStrings:
                   ToDoDB.ProviderName %>" 
-               SelectCommand="SELECT [title], [activity], 
-                  [assigned_to], [created], [due_date] FROM [todo]">
+                  SelectCommand="SELECT [id], [activity], 
+                  [assigned_to], [created], [due_date] FROM [to_do]">
             </asp:SqlDataSource>
             
             <asp:GridView ID="GridView1" runat="server" 
@@ -37,8 +37,6 @@
                <Columns>
                   <asp:BoundField DataField="due_date" 
                      HeaderText="Due Date" SortExpression="due_date" />
-                  <asp:BoundField DataField="title" HeaderText="Title" 
-                     SortExpression="Title" />
                   <asp:BoundField DataField="activity" 
                      HeaderText="Activity" SortExpression="activity" />
                   <asp:BoundField DataField="assigned_to" 
