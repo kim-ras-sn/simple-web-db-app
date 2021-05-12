@@ -1,5 +1,3 @@
-USE [ToDo]
-GO
 /****** Object:  Table [dbo].[todo]    Script Date: 12-05-2021 21:29:44 ******/
 SET ANSI_NULLS ON
 GO
@@ -11,6 +9,7 @@ CREATE TABLE [dbo].[todo](
 	[assigned_to] [nvarchar](50) NULL,
 	[created] [datetime] NULL,
 	[due_date] [datetime] NULL,
+	[completed] [bit] NULL
 );
 GO
 ALTER TABLE [dbo].[todo] ADD  CONSTRAINT [DF_todo_created]  DEFAULT (getdate()) FOR [created]
@@ -19,11 +18,15 @@ ALTER TABLE [dbo].[todo] ADD  CONSTRAINT [DF_todo_duo_date]  DEFAULT (dateadd(da
 GO
 ALTER TABLE [dbo].[todo] ADD  CONSTRAINT [DF_todo_id]  DEFAULT (newid()) FOR [id]
 GO
-INSERT [dbo].[todo] ([title], [activity], [assigned_to]) VALUES (N'Clean the Kitchen', N'Mr Muscel')
+ALTER TABLE [dbo].[todo] ADD  CONSTRAINT [DF_todo_completed]  DEFAULT ((0)) FOR [completed]
 GO
-INSERT [dbo].[todo] ([title], [activity], [assigned_to]) VALUES (N'Save the whole world', N'Superman')
+
+-- Data -- 
+INSERT [dbo].[todo] ( [activity], [assigned_to]) VALUES (N'Clean the Kitchen', N'Mr Muscel')
 GO
-INSERT [dbo].[todo] ([title], [activity], [assigned_to]) VALUES (N'Grap a drink - Your deserve it ', N'you')
+INSERT [dbo].[todo] ( [activity], [assigned_to]) VALUES (N'Save the whole world', N'Superman')
 GO
-INSERT [dbo].[todo] ([title], [activity], [assigned_to]) VALUES (N'Buy milk ', N'me')
+INSERT [dbo].[todo] ([activity], [assigned_to]) VALUES (N'Grap a drink - Your deserve it ', N'you')
+GO
+INSERT [dbo].[todo] ([activity], [assigned_to], [completed]) VALUES (N'Buy milk ', N'me', 1)
 GO
