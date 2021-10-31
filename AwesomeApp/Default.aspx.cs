@@ -5,5 +5,4 @@ string connectString = ConfigurationManager.ConnectionStrings["ConnectionString"
 SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(connectString);
 // Retrieve the DataSource property.    
 string IPAddress = builder.DataSource;
-
 **/
